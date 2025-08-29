@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+ "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.theodore.telemetry</string>
+
+    <key>ProgramArguments</key>
+<array>
+  <string>/usr/bin/python3</string>
+  <string>/Users/theodore/Desktop/Repositories/mac-battery-tracker/telemetry_daemon.py</string>
+</array>
+
+<key>WorkingDirectory</key>
+<string>/Users/theodore/Desktop/Repositories/mac-battery-tracker</string>
+
+  <key>RunAtLoad</key>
+  <true/>
+
+  <key>KeepAlive</key>
+  <true/>
+
+  <!-- Optional: you may still put overrides here; .env will also be read -->
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PYTHONUNBUFFERED</key>
+    <string>1</string>
+  </dict>
+
+  <key>StandardOutPath</key>
+  <string>/Users/theodore/Library/Logs/telemetry.stdout.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/theodore/Library/Logs/telemetry.stderr.log</string>
+</dict>
+</plist>
