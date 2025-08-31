@@ -9,11 +9,11 @@
   <key>ProgramArguments</key>
     <array>
       <string>/usr/bin/python3</string>
-      <string>/Users/theodore/Desktop/Repositories/mac-battery-tracker/telemetry_daemon.py</string>
+      <string>/Users/theodore/Desktop/Repositories/mac-telem/telemetry_daemon.py</string>
     </array>
 
 <key>WorkingDirectory</key>
-<string>/Users/theodore/Desktop/Repositories/mac-battery-tracker</string>
+<string>/Users/theodore/Desktop/Repositories/mac-telem</string>
 
   <key>RunAtLoad</key>
   <true/>
