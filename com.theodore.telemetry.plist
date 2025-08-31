@@ -6,11 +6,11 @@
   <key>Label</key>
   <string>com.theodore.telemetry</string>
 
-    <key>ProgramArguments</key>
-<array>
-  <string>/usr/bin/python3</string>
-  <string>/Users/theodore/Desktop/Repositories/mac-battery-tracker/telemetry_daemon.py</string>
-</array>
+  <key>ProgramArguments</key>
+    <array>
+      <string>/usr/bin/python3</string>
+      <string>/Users/theodore/Desktop/Repositories/mac-battery-tracker/telemetry_daemon.py</string>
+    </array>
 
 <key>WorkingDirectory</key>
 <string>/Users/theodore/Desktop/Repositories/mac-battery-tracker</string>
