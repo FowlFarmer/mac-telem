@@ -6,6 +6,9 @@ Simple daemon that allows your mac to update a mongodb database with your batter
 
 1. Create a python venv in this dir, then source activate, and install requirements.txt
 
-2. Edit the plist and setup.sh to reflect your directories and move it into Library/Launchagents folder on mac
+2. Edit the plist and setup.sh to reflect your directories
 
-3. Run setup.sh
+3. Symlink your plist from this repo into the launchagents folder that macos uses:
+    ln -s /Users/theodore/mac-telem/com.theodore.telemetry.plist ~/Library/LaunchAgents/com.theodore.telemetry.plist
+
+4. Run setup.sh

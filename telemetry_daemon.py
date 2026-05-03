@@ -262,7 +262,9 @@ def main():
         try:
             write_single(snapshot())
         except Exception as e:
-            print(f"[telemetry] error: {e}", file=sys.stderr)
+            ts = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            print(f"[telemetry] error [{ts}]: {e}", file=sys.stderr)
+            sys.exit(1)
         time.sleep(SAMPLE_EVERY_SEC)
 
 if __name__ == "__main__":
