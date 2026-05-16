@@ -6,4 +6,4 @@ sleep 15
 cd /Users/theodore/mac-telem
 source venv/bin/activate
 
-exec python telemetry_daemon.py
+exec python3 telemetry_daemon.py
