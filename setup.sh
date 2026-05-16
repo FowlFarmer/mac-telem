@@ -6,7 +6,7 @@
 # Make sure to set up the venv in this repo initally with requirements.txt
 
 rm -rf ~/Library/Logs/telemetry.stderr.log
-launchctl unload ~/Library/LaunchAgents/com.theodore.telemetry.plist 2>/dev/null || true
-launchctl load   ~/Library/LaunchAgents/com.theodore.telemetry.plist
-launchctl start  com.theodore.telemetry
+launchctl bootout gui/$(id -u) ~/Library/LaunchAgents/com.theodore.telemetry.plist 2>/dev/null
+launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.theodore.telemetry.plist
+launchctl kickstart -k gui/$(id -u)/com.theodore.telemetry
 tail -f ~/Library/Logs/telemetry.stderr.log

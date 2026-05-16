@@ -3,33 +3,38 @@
  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+
   <key>Label</key>
   <string>com.theodore.telemetry</string>
 
   <key>ProgramArguments</key>
   <array>
-    <string>/Users/theodore/mac-telem/venv/bin/python</string>
-    <string>/Users/theodore/mac-telem/telemetry_daemon.py</string>
+    <string>/Users/theodore/mac-telem/start.sh</string>
   </array>
 
   <key>WorkingDirectory</key>
   <string>/Users/theodore/mac-telem</string>
 
-  <key>RunAtLoad</key><true/>
+  <key>RunAtLoad</key>
+  <true/>
 
-  <key>KeepAlive</key><true/>
+  <key>KeepAlive</key>
+  <dict>
+    <key>SuccessfulExit</key>
+    <false/>
+  </dict>
 
   <key>EnvironmentVariables</key>
   <dict>
-    <key>PYTHONUNBUFFERED</key><string>1</string>
-    <!-- Optional but nice: point PATH at your venv bin first -->
-    <key>PATH</key><string>/Users/theodore/mac-telem/venv/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
-    <!-- If your code relies on reading .env, load it in Python or use the wrapper in Option B -->
+    <key>PYTHONUNBUFFERED</key>
+    <string>1</string>
   </dict>
 
   <key>StandardOutPath</key>
   <string>/Users/theodore/Library/Logs/telemetry.stdout.log</string>
+
   <key>StandardErrorPath</key>
   <string>/Users/theodore/Library/Logs/telemetry.stderr.log</string>
+
 </dict>
 </plist>

@@ -264,7 +264,6 @@ def main():
         except Exception as e:
             ts = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             print(f"[telemetry] error [{ts}]: {e}", file=sys.stderr)
-            sys.exit(1)
         time.sleep(SAMPLE_EVERY_SEC)
 
 if __name__ == "__main__":
