@@ -9,7 +9,7 @@
 
   <key>ProgramArguments</key>
   <array>
-    <string>/Users/theodore/mac-telem/start.sh</string>
+    <string>/Users/theodore/mac-telem/report.sh</string>
   </array>
 
   <key>WorkingDirectory</key>
@@ -18,11 +18,8 @@
   <key>RunAtLoad</key>
   <true/>
 
-  <key>KeepAlive</key>
-  <dict>
-    <key>SuccessfulExit</key>
-    <false/>
-  </dict>
+  <key>StartInterval</key>
+  <integer>300</integer>
 
   <key>EnvironmentVariables</key>
   <dict>

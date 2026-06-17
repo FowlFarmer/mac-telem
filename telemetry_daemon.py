@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-macOS telemetry daemon (fixed delegate definition):
+macOS telemetry reporter (one-shot; invoked by LaunchAgent every few minutes):
 - Battery %
 - CoreLocation -> CLGeocoder (city/region/country)
 - Timestamp
@@ -34,7 +34,6 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 load_dotenv(os.path.join(SCRIPT_DIR, ".env"))
 
 # ----------------------- Config ---------------------------------------------
-SAMPLE_EVERY_SEC = int(os.environ.get("SAMPLE_EVERY_SEC", "120"))
 DB_NAME   = os.environ.get("MONGO_DB", "system_monitor")
 COLL_NAME = os.environ.get("MONGO_COLLECTION", "telemetry")
 DOC_ID    = os.environ.get("DOC_ID", "current")
@@ -251,20 +250,19 @@ def snapshot() -> Dict:
         },
         "battery": {"percent": get_battery_percent()},
         "location": get_location_with_city(),
-        "notes": "Single rolling document; delegate defined once at module scope.",
+        "notes": "Single rolling document; updated by periodic LaunchAgent job.",
     }
 
 def main():
     if platform.system() != "Darwin":
         print("Warning: intended for macOS (Darwin).", file=sys.stderr)
 
-    while True:
-        try:
-            write_single(snapshot())
-        except Exception as e:
-            ts = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-            print(f"[telemetry] error [{ts}]: {e}", file=sys.stderr)
-        time.sleep(SAMPLE_EVERY_SEC)
+    try:
+        write_single(snapshot())
+    except Exception as e:
+        ts = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        print(f"[telemetry] error [{ts}]: {e}", file=sys.stderr)
+        sys.exit(1)
 
 if __name__ == "__main__":
     main()

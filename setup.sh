@@ -5,8 +5,11 @@
 
 # Make sure to set up the venv in this repo initally with requirements.txt
 
-rm -rf ~/Library/Logs/telemetry.stderr.log
+chmod +x report.sh start.sh
+
+rm -f ~/Library/Logs/telemetry.stderr.log ~/Library/Logs/telemetry.stdout.log
 launchctl bootout gui/$(id -u) ~/Library/LaunchAgents/com.theodore.telemetry.plist 2>/dev/null
 launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.theodore.telemetry.plist
-launchctl kickstart -k gui/$(id -u)/com.theodore.telemetry
-tail -f ~/Library/Logs/telemetry.stderr.log
+launchctl kickstart gui/$(id -u)/com.theodore.telemetry
+echo "Telemetry job scheduled every 5 minutes. Recent stderr:"
+tail -n 20 ~/Library/Logs/telemetry.stderr.log 2>/dev/null || echo "(no log yet)"
